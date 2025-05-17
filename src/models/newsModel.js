@@ -10,7 +10,7 @@ const newsSchema = new mongoose.Schema({
     type: String,
 
 
-    select: false
+   
   },
 image: {
     type: String,
@@ -35,6 +35,17 @@ image: {
     required: [true, 'Date  is required'],
   
   },
+  divison: {
+    type: String,
+    required: [true, 'Divison  is required'],
+  
+  },
+  page: {
+    type: String,
+    required: [true, 'Page  is required'],
+  
+  },
+
 
  
 
