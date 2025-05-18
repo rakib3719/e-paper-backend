@@ -17,6 +17,12 @@ password: {
     lowercase: true,
    
   },
+  role: {
+    type: String,
+    required: [true, 'Role is required'],
+   
+   
+  },
  
 
   

@@ -114,15 +114,14 @@ export const login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    const isProd = process.env.NODE_ENV === "production";
+       const isProd = process.env.NODE_ENV === "production";
 
     res.cookie("token", token, {
       httpOnly: false,
-      secure: isProd,               // true on Vercel (HTTPS)
+      secure: isProd,              
       sameSite: isProd ? "None" : "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-
 
 
 
@@ -130,11 +129,7 @@ export const login = async (req, res) => {
    
     res.status(200).json({
       message: 'Login successful',
-      user: {
-        id: user._id,
-        email: user.email,
-        role: user.role
-      }
+      user
     });
 
   } catch (error) {
@@ -200,6 +195,18 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
+export const getUser = async(req, res)=>{
+
+  const token = req?.cookies?.token;
+console.log(token, 'cookie asca ttttt');
+const decoded = decodedToken(token);
+console.log(decoded, 'decoded tokenm');
+const resp = await User.findById(decoded?.id);
+console.log(resp, 'ay jhai');
+
+
+
+}
 
 
 
